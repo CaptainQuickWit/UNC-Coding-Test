@@ -50,7 +50,7 @@ var question4Ele = document.querySelector("#question4");
 
 var currentScore = 0;
 var questionsIndex = 0;
-var timeInSeconds = 10;
+var timeInSeconds = 1;
 
 // Start the timer
 function timer() {
@@ -66,6 +66,12 @@ function timer() {
     
 
 
+  }
+
+  function removeChildrenByID(id, tag, content,returnEle) {
+    
+    var element = document.getElementById(id);
+    element.innerHTML = "";
   }
 
   function renderByID(id, tag, content,returnEle) {
@@ -97,7 +103,7 @@ function timer() {
     renderState("-end");
 
     //footer.innerHTML = "";
-    renderByID("clock","p","yessir");
+    //renderByID("clock","p","yessir");
 
 
   });
@@ -107,19 +113,19 @@ function terminate () {
     renderState("-intro");
     renderState("-inProgress");
     renderState("end");
+    renderState("inProgress");
+
         
 }
 
 function switchState(element) {
 
-
     if (element.classList.contains("hide")) {
         element.classList.remove("hide");
-    } 
-    if (!element.classList.contains("hide")) {
+    } else {
         element.classList.add("hide");
-    } 
-
+    }
+    
 }
 
 function isHidden(element) {
@@ -143,6 +149,10 @@ function renderState(element) {
             }
         break;
         case "end":
+            //console.log("xxxxx");
+            //console.log("xxxxx");
+            console.log(isHidden(end));
+            
             if (isHidden(end)) {
                 switchState(end);
             } 
