@@ -37,7 +37,7 @@ var startBtn = document.querySelector("#startBtn");
 var clearBtn = document.querySelector("#clearBtn");
 var submitBtn = document.querySelector("#submitBtn");
 var questionsCard = document.querySelector("#questionsCard");
-
+var footer = document.querySelector("#footer");
 
 var intro = document.querySelector("#intro");
 var inProgress = document.querySelector("#inProgress");
@@ -50,26 +50,63 @@ var question4Ele = document.querySelector("#question4");
 
 var currentScore = 0;
 var questionsIndex = 0;
-var timeInSeconds = 30;
+var timeInSeconds = 10;
 
 // Start the timer
 function timer() {
     var none = 0;
     timeInterval = setInterval(function () {
         timeInSeconds--;
-      timerDisplay.textContent = "Clock: " + timeInSeconds;
-      if (timeInSeconds === none) {
+      clock.textContent = "Clock: " + timeInSeconds;
+      if (timeInSeconds <= none) {
         clearInterval(timeInterval);
         terminate();
       }
     }, 1000);
+    
+
 
   }
 
+  function renderByID(id, tag, content,returnEle) {
+    
+    var element = document.getElementById(id);
+    console.log(`${id}`);
+    if (tag) {
+        var tagCreated = document.createElement(tag);
+    }
+    if (content) {
+        tagCreated.innerHTML = content;  
+    }
+    console.log(element);
+    if (element) {
+        element.appendChild(tagCreated); 
+    }
+    if (returnEle) {
+        return element;
+    }
+    //element.appendChild(tag); 
+    //return element;
+  }
+
+  startBtn.addEventListener("click", function (event) {
+    timer();
+    console.log("event registered");
+    renderState("-intro");
+    renderState("inProgress");
+    renderState("-end");
+
+    //footer.innerHTML = "";
+    renderByID("clock","p","yessir");
+
+
+  });
 
 function terminate () {
-
-    render("end");
+    timeInSeconds = 0;
+    renderState("-intro");
+    renderState("-inProgress");
+    renderState("end");
         
 }
 
@@ -93,39 +130,39 @@ function isHidden(element) {
     }
 }
 
-function render(element) {
+function renderState(element) {
     switch (element) {
         case "intro":
-            if (isHidden(element)) {
-                switchState(element);
+            if (isHidden(intro)) {
+                switchState(intro);
             } 
         break;
         case "inProgress":
-            if (isHidden(element)) {
-                switchState(element);
+            if (isHidden(inProgress)) {
+                switchState(inProgress);
             }
         break;
         case "end":
-            if (isHidden(element)) {
-                switchState(element);
+            if (isHidden(end)) {
+                switchState(end);
             } 
         break;
             //negative statements
         case "-intro":
-            if (!isHidden(element)) {
-                switchState(element);
+            if (!isHidden(intro)) {
+                switchState(intro);
             } 
          
         break;
         
         case "-inProgress":
-            if (!isHidden(element)) {
-                switchState(element);
+            if (!isHidden(inProgress)) {
+                switchState(inProgress);
             } 
         break;
         case "-end":
-            if (!isHidden(element)) {
-                switchState(element);
+            if (!isHidden(end)) {
+                switchState(end);
             } 
         break;
     }
