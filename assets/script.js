@@ -50,10 +50,14 @@ var question4Ele = document.querySelector("#question4");
 
 var currentScore = 0;
 var questionsIndex = 0;
-var timeInSeconds = 1;
+var timeInSeconds = 8;
 
+var ulCreated = document.createElement("ul");
 // Start the timer
 function timer() {
+    renderQ(0); 
+
+    
     var none = 0;
     timeInterval = setInterval(function () {
         timeInSeconds--;
@@ -67,6 +71,27 @@ function timer() {
 
 
   }
+
+
+    function renderQ(questionIndex) { 
+        questionsCard.innerHTML = "";
+        ulCreated.innerHTML = "";
+    
+    for (var i = 0; i < questions.length; i++) {
+        // Changes the questionsCard text to be current question
+        var userQuestion = questions[questionIndex].title;
+        var userChoices = questions[questionIndex].choices;
+        questionsCard.textContent = userQuestion;
+    }
+    
+    userChoices.forEach(function (newItem) {
+        var listItem = document.createElement("li");
+        listItem.textContent = newItem;
+        questionsCard.appendChild(ulCreated);
+        ulCreated.appendChild(listItem);
+        listItem.addEventListener("click", (compare));
+    })
+    }
 
   function removeChildrenByID(id, tag, content,returnEle) {
     
@@ -95,17 +120,22 @@ function timer() {
     //return element;
   }
 
+  /*
+  multipleChoiceCard.addEventListener("click", function (event) {
+  var event = event.target;
+  compareAnswer(event.textContent.trim());
+});
+  */
+  
   startBtn.addEventListener("click", function (event) {
     timer();
-    console.log("event registered");
+    //console.log("event registered");
     renderState("-intro");
     renderState("inProgress");
     renderState("-end");
 
-    //footer.innerHTML = "";
-    //renderByID("clock","p","yessir");
-
-
+    
+    
   });
 
 function terminate () {
@@ -177,3 +207,4 @@ function renderState(element) {
         break;
     }
 }
+
