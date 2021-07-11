@@ -31,3 +31,102 @@ var questions = [
     },
   
   ];
+
+var clock = document.querySelector("#clock");
+var startBtn = document.querySelector("#startBtn");
+var clearBtn = document.querySelector("#clearBtn");
+var submitBtn = document.querySelector("#submitBtn");
+var questionsCard = document.querySelector("#questionsCard");
+
+
+var intro = document.querySelector("#intro");
+var inProgress = document.querySelector("#inProgress");
+var end = document.querySelector("#end");
+
+var question1Ele = document.querySelector("#question1");
+var question2Ele = document.querySelector("#question2");
+var question3Ele = document.querySelector("#question3");
+var question4Ele = document.querySelector("#question4");
+
+var currentScore = 0;
+var questionsIndex = 0;
+var timeInSeconds = 30;
+
+// Start the timer
+function timer() {
+    var none = 0;
+    timeInterval = setInterval(function () {
+        timeInSeconds--;
+      timerDisplay.textContent = "Clock: " + timeInSeconds;
+      if (timeInSeconds === none) {
+        clearInterval(timeInterval);
+        terminate();
+      }
+    }, 1000);
+
+  }
+
+
+function terminate () {
+
+    render("end");
+        
+}
+
+function switchState(element) {
+
+
+    if (element.classList.contains("hide")) {
+        element.classList.remove("hide");
+    } 
+    if (!element.classList.contains("hide")) {
+        element.classList.add("hide");
+    } 
+
+}
+
+function isHidden(element) {
+    if (element.classList.contains("hide")) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function render(element) {
+    switch (element) {
+        case "intro":
+            if (isHidden(element)) {
+                switchState(element);
+            } 
+        break;
+        case "inProgress":
+            if (isHidden(element)) {
+                switchState(element);
+            }
+        break;
+        case "end":
+            if (isHidden(element)) {
+                switchState(element);
+            } 
+        break;
+            //negative statements
+        case "-intro":
+            if (!isHidden(element)) {
+                switchState(element);
+            } 
+         
+        break;
+        
+        case "-inProgress":
+            if (!isHidden(element)) {
+                switchState(element);
+            } 
+        break;
+        case "-end":
+            if (!isHidden(element)) {
+                switchState(element);
+            } 
+        break;
+    }
+}
