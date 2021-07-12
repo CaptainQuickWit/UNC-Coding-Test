@@ -23,36 +23,53 @@
             <button id="startBtn" type="button" class="btn btn-danger">start</button>
         </div>
 
-        <div id = "inProgress"class ="">
+        <div id = "inProgress"class ="hide">
             <div id = "questionsCard" class = "">
                 
             </div>
             <!-- <div id="" class=""></div>-->
-            <h3 id="clock"></h3>
+            <div class = "container">
+                <div class = "row">
+                    <h3 class = "col"id="clock"></h3>
+                    <h3 class = "col"id="response1"></h3>
+                </div>
+            </div>
         </div>
 
-        <div id = "end" class ="">
+        <div id = "end" class ="hide">
             <h2>You did it!!!!!</h2>
-            <div id="scoreCard" class="">
 
+            <h3 id="scoreTotal" class = ""></h3>
+
+            <form class = "" id = "form">
+                <label for="initials">Initials:</label><br>
+                <input id="initials" type="text" maxlength="17"><br>
+                <button id="submitInitialsBtn" type="button" class="btn btn-success">Submit</button>
+            </form>
+              
+
+            <div id="scoreCard" class="hide">
+            
             </div>
-            <h3 id="clock" class = ""></h3>
+
             <button id="backBtn" type="button" class="btn btn-warning">Back</button>
             <button id="clearBtn" type="button" class="btn btn-danger">Clear</button>
-        </div>
-
-
-        <div id = "scoreCard" class ="hide">
-
-        </div>
-
-        <div id = "clockWrapper" class="">
-            
         </div>
 
     </main>
 
     <script src="./assets/script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
