@@ -2,3 +2,130 @@
 .hide {
     display: none;
 }
+
+* {
+    box-sizing: border-box;
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    color: rgb(41, 40, 40);
+  }
+
+body {
+    background:rgb(143, 150, 250)
+}
+
+#startBtn {
+    background-color:  rgb(9, 0, 128);
+    margin-left: 33%;
+    padding: 15px 32px;
+    font-size: 20px;
+    color: seashell;
+}
+
+#overallCard {
+    border-radius: 25px;
+    background: #aaaca8;
+   
+}
+
+
+button {
+    border-radius: 8px;
+    margin: 0 auto;
+    display: block;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+a {
+    background-color:  rgb(9, 0, 128);
+    margin-top: 10px;
+    padding: 5px 15px;
+    width: 80%;
+    font-size: 18px;
+    color: seashell;
+    text-decoration: none;
+    border-radius: 4px;
+} 
+
+a:hover {
+    cursor: pointer;
+}
+
+
+textarea {
+    width: 90%;
+    margin: 20px;
+}
+
+
+#questionsCard {
+    color: seashell;
+}
+
+
+input {
+    margin-bottom: 20px;
+    width: 50%;
+    border: 1px solid lightgray;
+}
+
+header {
+    text-align: center;
+    color: seashell;
+}
+
+li, h2 {
+    list-style-type: none;
+    background-color: rgb(255, 254, 251);
+    margin-top: 10px;
+    padding: 5px 15px;
+    width: 80%;
+    font-size: 18px;
+    color: black;
+    border-radius: 4px;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 786px) {
+
+body {
+    max-width: 786px;
+}
+
+a {
+margin-left: 20%;
+}
+
+#clear {
+    
+    position: relative;
+    right: 5%;
+    
+}
+
+}
+
+
+@media screen and (max-width: 640px) {
+
+body {
+    min-width: 640px;
+}
+
+#wrapper {
+position: absolute;
+left: 10%;
+}
+a {
+  margin-left: 10%;
+}
+
+
+}

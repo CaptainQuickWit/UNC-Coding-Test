@@ -31,21 +31,11 @@ var questions = [
     },
   
   ];
-/*
-<header id = "title" class = ""></header>
-                <div id = "dynRendering" class = ""></div>
 
 
-
-
- <form class = "" id = "form">
-                <label for="initials">Initials:</label><br>
-                <input id="initials" type="text" maxlength="17"><br>
-                <button id="submitInitialsBtn" type="button" class="btn btn-success">Submit</button>
-            </form>
-              
-
-*/
+var btnWrapper = document.querySelector("#btnWrapper");
+var header1 = document.querySelector("#header1");
+var header2 = document.querySelector("#header2");
 var scoreCard = document.querySelector("#scoreCard");
 var formEle = document.querySelector("#form");
 var initials = document.querySelector("#initials");
@@ -146,6 +136,8 @@ function terminate () {
     renderState("-intro");
     renderState("-inProgress");
     renderState("end"); //end section displayed only
+    
+    
     scoreTotal.innerHTML = "Your Score: " + currentScore + " out of " + questions.length;
     
     
@@ -164,6 +156,7 @@ function switchState(element) {
     } else {
         element.classList.add("hide");
     }
+    
     
 }
 /**
@@ -226,6 +219,7 @@ function renderState(element) {
 
 submitInitialsBtn.addEventListener("click", function (event) {
     //user must enter an initial
+   
     if (initials.value === null || initials.value === "" || initials === undefined) {
         alert("you must enter a valid initial");
         return;
@@ -259,6 +253,7 @@ submitInitialsBtn.addEventListener("click", function (event) {
 
 
     switchState(formEle); //removes the form from the final screen
+    
     switchState(scoreCard); //displays the scorecard
     readScores(scoreBoard) //displays the localstorage on the page
 
@@ -275,6 +270,7 @@ clearBtn.addEventListener("click", function () {
  * @param {the parsed scoreBoard object} scoreBoard 
  */
 function readScores(scoreBoard) {
+    switchState(btnWrapper);
     console.log("scoreboard as str: "+scoreBoard);
     if (scoreBoard === null) {
         console.log("line 283 scoreBoard returned null");

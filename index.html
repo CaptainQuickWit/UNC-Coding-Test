@@ -5,72 +5,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./assets/style.css">
     <title>coding test</title>
 </head>
 
 <body>
     
-    
-    <header><h1>JavaScript Knowlodge Test</h1></header>
+    <div class="container-fluid py-5">
 
-    <main>
-        <!-- the index is divided into 3 "states", the intro inProgress and end-->
-        <section id = "intro" class="">
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At ipsam reprehenderit nam excepturi explicabo debitis rerum sint voluptatum quas impedit. Voluptatibus doloremque officiis laboriosam, nesciunt fuga quam eum a debitis!
-            </p>
-            <button id="startBtn" type="button" class="btn btn-danger">start</button>
-        </section>
-        <!-- the hide class attr determines which sections's are being displayed-->
-        <!-- the inprogress will be displayed when user is taking the quiz-->
-        <section id = "inProgress"class ="hide">
-            <section id = "questionsCard" class = "">
+    <header class="" id="header1"><h1>Test your knowledge in programming</h1></header>
+    <header class="hide" id="header2"><h1>You did it!!!!</h1></header>
+        
+    <main >
+        <div class="container my-5">
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-center p-3" id = "overallCard">
+                        <!-- the index is divided into 3 "states", the intro inProgress and end-->
+                        <section id = "intro" class="container-fluid ">
                 
-            </section>
-           
-            <div class = "container">
-                <div class = "row">
-                    <h3 class = "col"id="clock"></h3>
-                    <h3 class = "col"id="response1"></h3>
+                            <p>Welcome to the coding test! Here you will be put through a strenuous test that is timed, multi-choiced, covering Javascript and Html. If you answer incorrectly then you will loose time on the quiz and have the option of saving your scores at the end!
+                            </p>
+                            <button id="startBtn" type="button" class="btn btn-danger my-5">start</button>
+                        </section>
+                        <!-- the hide class attr determines which sections's are being displayed-->
+                        <!-- the inprogress will be displayed when user is taking the quiz-->
+                        <section id = "inProgress"class ="hide container-fluid">
+                            <section id = "questionsCard" class = "">
+                                
+                            </section>
+                           
+                            <div class = "container align-item-center">
+                                <div class = "row justify-content-center">
+                                    <h3 class = "col"id="clock"></h3>
+                                    <h3 class = "col"id="response1"></h3>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- the end section will be displayed after quiz is over-->
+                        <section id = "end" class ="hide container-fluid">
+                            
+                            <!-- elements will be dynamically rendered-->
+                            <h3 id="scoreTotal" class = ""></h3>
+                                
+                            <form class = "" id = "form">
+                                <label for="initials">Initials:</label><br>
+                                <input id="initials" type="text" maxlength="17"><br>
+                                <button id="submitInitialsBtn" type="button" class="btn btn-success justify-content-right">Submit</button>
+                            </form>
+                              
+                            <!-- the scores displayed here-->
+                            <section id="scoreCard" class="hide">
+                            
+                            </section>
+                            <div class="hide" id="btnWrapper">
+                                <div class="row">
+                                    <div class = "col">
+                                        <button id="backBtn" type="button" class="btn btn-success">Back</button>
+                                    </div>
+                
+                                    <div class = "col">
+                                        <button id="clearBtn" type="button" class="btn btn-success">Clear</button>
+                                    </div>
+                                    
+                                    
+                
+                                </div>
+                                
+                            </div>
+                            
+                        </section>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <!-- the end section will be displayed after quiz is over-->
-        <section id = "end" class ="hide">
-            <h2>You did it!!!!!</h2>
-            <!-- elements will be dynamically rendered-->
-            <h3 id="scoreTotal" class = ""></h3>
-                
-            <form class = "" id = "form">
-                <label for="initials">Initials:</label><br>
-                <input id="initials" type="text" maxlength="17"><br>
-                <button id="submitInitialsBtn" type="button" class="btn btn-success">Submit</button>
-            </form>
               
-            <!-- the scores displayed here-->
-            <section id="scoreCard" class="hide">
-            
-            </section>
-
-            <button id="backBtn" type="button" class="btn btn-warning">Back</button>
-            <button id="clearBtn" type="button" class="btn btn-danger">Clear</button>
-        </section>
-
+            </div>
+        </div>
+        
     </main>
 
+    </div>  
     <script src="./assets/script.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  
 </body>
 
 </html>
