@@ -77,20 +77,20 @@ function timer() {
         questionsCard.innerHTML = "";
         ulCreated.innerHTML = "";
     
-    for (var i = 0; i < questions.length; i++) {
-        // Changes the questionsCard text to be current question
-        var userQuestion = questions[questionIndex].title;
-        var userChoices = questions[questionIndex].choices;
-        questionsCard.textContent = userQuestion;
-    }
+        for (var i = 0; i < questions.length; i++) {
+            // Changes the questionsCard text to be current question
+            var userQuestion = questions[questionIndex].title;
+            var userChoices = questions[questionIndex].choices;
+            questionsCard.textContent = userQuestion;
+        }
     
-    userChoices.forEach(function (newItem) {
-        var listItem = document.createElement("li");
-        listItem.textContent = newItem;
-        questionsCard.appendChild(ulCreated);
-        ulCreated.appendChild(listItem);
-        listItem.addEventListener("click", (compare));
-    })
+        userChoices.forEach(function (newItem) {
+            var listItem = document.createElement("li");
+            listItem.textContent = newItem;
+            questionsCard.appendChild(ulCreated);
+            ulCreated.appendChild(listItem);
+            listItem.addEventListener("click", (compare));
+        })
     }
 
   function removeChildrenByID(id, tag, content,returnEle) {
