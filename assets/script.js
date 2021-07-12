@@ -31,14 +31,21 @@ var questions = [
     },
   
   ];
+/*
+<header id = "title" class = ""></header>
+                <div id = "dynRendering" class = ""></div>
+*/
 
+var title = document.querySelector("#title");
+var dynRendering = document.querySelector("#dynRendering");
+var questionTitle = document.querySelector("#questionTitle");
 var clock = document.querySelector("#clock");
 var startBtn = document.querySelector("#startBtn");
 var clearBtn = document.querySelector("#clearBtn");
 var submitBtn = document.querySelector("#submitBtn");
 var questionsCard = document.querySelector("#questionsCard");
 var footer = document.querySelector("#footer");
-
+var dynRender = document.querySelector("#dynamicRendering");
 var intro = document.querySelector("#intro");
 var inProgress = document.querySelector("#inProgress");
 var end = document.querySelector("#end");
@@ -47,18 +54,17 @@ var question1Ele = document.querySelector("#question1");
 var question2Ele = document.querySelector("#question2");
 var question3Ele = document.querySelector("#question3");
 var question4Ele = document.querySelector("#question4");
-
 var currentScore = 0;
 var questionsIndex = 0;
-var timeInSeconds = 8;
 
+var timeInSeconds = 8;
 var ulCreated = document.createElement("ul");
 // Start the timer
 function timer() {
-    renderQ(0); 
-
-    
     var none = 0;
+    var firstQuestion = questionsIndex;
+
+    renderQuestions(firstQuestion); 
     timeInterval = setInterval(function () {
         timeInSeconds--;
       clock.textContent = "Clock: " + timeInSeconds;
@@ -67,31 +73,77 @@ function timer() {
         terminate();
       }
     }, 1000);
-    
-
 
   }
 
+    
+function renderQuestions(questionIndex) {
 
-    function renderQ(questionIndex) { 
-        questionsCard.innerHTML = "";
-        ulCreated.innerHTML = "";
-    
-        for (var i = 0; i < questions.length; i++) {
-            // Changes the questionsCard text to be current question
-            var userQuestion = questions[questionIndex].title;
-            var userChoices = questions[questionIndex].choices;
-            questionsCard.textContent = userQuestion;
-        }
-    
-        userChoices.forEach(function (newItem) {
-            var listItem = document.createElement("li");
-            listItem.textContent = newItem;
-            questionsCard.appendChild(ulCreated);
-            ulCreated.appendChild(listItem);
-            listItem.addEventListener("click", (compare));
-        })
+    questionsCard.innerHTML = "";
+    /*
+    var listEl = document.createElement("ul");
+
+    var answersArrayLength = questions[questionIndex].choices.length;
+    var li;
+    var h2 = document.createElement("h2");
+    h2.textContent = questions[questionIndex].title;
+
+    for (var i = 0; i < answersArrayLength; i++) {
+        li = document.createElement("li");
+        li.textContent = questions[questionIndex].choices[i];
+        listEl.appendChild(li);
     }
+    questionsCard.appendChild(h2);
+    questionsCard.appendChild(listEl);*/
+
+    var answersArrayLength = questions[questionIndex].choices.length;
+    var p;
+    var h1 = document.createElement("h1");
+    h1.textContent = questions[questionIndex].title;
+    questionsCard.appendChild(h1);
+
+    for (var i = 0; i < answersArrayLength; i++) {
+        h2 = document.createElement("h2");
+        h2.textContent = questions[questionIndex].choices[i];
+        questionsCard.appendChild(h2);
+    }
+    
+    //questionsCard.appendChild(listEl);
+    /*
+    dynRender.innerHTML = "";
+    question1Ele.innerHTML = "";
+    question2Ele.innerHTML = "";
+    question3Ele.innerHTML = "";
+    question4Ele.innerHTML = "";*/
+    //questionsCard.innerHTML = "";
+    //ulCreated.innerHTML = "";
+    /*
+ 
+    console.log("====="+userQuestion);
+    /*
+    
+    
+    
+    dynRender.innerHTML = questions[questionIndex].title;
+    question1Ele.innerHTML = questions[questionIndex].choices[0];
+    question2Ele.innerHTML = questions[questionIndex].choices[1];
+    question3Ele.innerHTML = questions[questionIndex].choices[2];
+    question4Ele.innerHTML = questions[questionIndex].choices[3];
+
+    questionsCard.appendChild(dynRender);
+    questionsCard.appendChild(question1Ele);
+    questionsCard.appendChild(question2Ele);
+    questionsCard.appendChild(question3Ele);
+    questionsCard.appendChild(question4Ele);*/
+
+    
+
+/*  
+    */
+}
+
+
+
 
   function removeChildrenByID(id, tag, content,returnEle) {
     
@@ -120,13 +172,24 @@ function timer() {
     //return element;
   }
 
-  /*
-  multipleChoiceCard.addEventListener("click", function (event) {
-  var event = event.target;
-  compareAnswer(event.textContent.trim());
-});
-  */
-  
+  // Compares user choice to the answer
+  function compare(event) {
+
+    var element = event.target;
+
+    if (element.matches("li")) {
+        var createdDiv = document.createElement("div");
+        createdDiv.setAttribute("id", "createdDiv"); 
+        if (element.textContent == questions[questionIndex].answer) {
+            score++;
+            createdDiv.textContent = "Correct!";
+        } else {
+            // Sets the seconds left to 10 less than when the question was answered
+            secondsLeft = secondsLeft - penalty;
+            createdDiv.textContent = "Incorrect!";
+        }
+    }}
+
   startBtn.addEventListener("click", function (event) {
     timer();
     //console.log("event registered");
@@ -138,7 +201,7 @@ function timer() {
     
   });
 
-function terminate () {
+    function terminate () {
     timeInSeconds = 0;
     renderState("-intro");
     renderState("-inProgress");
@@ -146,7 +209,7 @@ function terminate () {
     renderState("inProgress");
 
         
-}
+    }
 
 function switchState(element) {
 
