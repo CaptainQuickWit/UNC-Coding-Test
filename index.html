@@ -15,46 +15,47 @@
     <header><h1>JavaScript Knowlodge Test</h1></header>
 
     <main>
-
-        <div id = "intro" class="">
+        <!-- the index is divided into 3 "states", the intro inProgress and end-->
+        <section id = "intro" class="">
 
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At ipsam reprehenderit nam excepturi explicabo debitis rerum sint voluptatum quas impedit. Voluptatibus doloremque officiis laboriosam, nesciunt fuga quam eum a debitis!
             </p>
             <button id="startBtn" type="button" class="btn btn-danger">start</button>
-        </div>
-
-        <div id = "inProgress"class ="hide">
-            <div id = "questionsCard" class = "">
+        </section>
+        <!-- the hide class attr determines which sections's are being displayed-->
+        <!-- the inprogress will be displayed when user is taking the quiz-->
+        <section id = "inProgress"class ="hide">
+            <section id = "questionsCard" class = "">
                 
-            </div>
-            <!-- <div id="" class=""></div>-->
+            </section>
+           
             <div class = "container">
                 <div class = "row">
                     <h3 class = "col"id="clock"></h3>
                     <h3 class = "col"id="response1"></h3>
                 </div>
             </div>
-        </div>
-
-        <div id = "end" class ="hide">
+        </section>
+        <!-- the end section will be displayed after quiz is over-->
+        <section id = "end" class ="hide">
             <h2>You did it!!!!!</h2>
-
+            <!-- elements will be dynamically rendered-->
             <h3 id="scoreTotal" class = ""></h3>
-
+                
             <form class = "" id = "form">
                 <label for="initials">Initials:</label><br>
                 <input id="initials" type="text" maxlength="17"><br>
                 <button id="submitInitialsBtn" type="button" class="btn btn-success">Submit</button>
             </form>
               
-
-            <div id="scoreCard" class="hide">
+            <!-- the scores displayed here-->
+            <section id="scoreCard" class="hide">
             
-            </div>
+            </section>
 
             <button id="backBtn" type="button" class="btn btn-warning">Back</button>
             <button id="clearBtn" type="button" class="btn btn-danger">Clear</button>
-        </div>
+        </section>
 
     </main>
 

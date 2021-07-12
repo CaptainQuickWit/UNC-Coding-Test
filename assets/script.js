@@ -73,9 +73,8 @@ var question3Ele = document.querySelector("#question3");
 var question4Ele = document.querySelector("#question4");
 var currentScore = 0;
 var questionsIndex = 0;
-//var scoreBoard = [];
 
-var countDown = 25;
+var countDown = 45;
 var ulCreated = document.createElement("ul");
 // Start the timer
 function timer() {
@@ -87,6 +86,7 @@ function timer() {
         countDown--;
       clock.textContent = "Clock: " + countDown;
       if (countDown <= none) {
+          //when time runs out kill the timer. 
         clearInterval(timeInterval);
         terminate();
       }
@@ -94,7 +94,10 @@ function timer() {
 
   }
 
-    
+/**
+ * This function renders the questions from the array
+ * @param {acts as the index of the quetions array} questionIndex 
+ */
 function renderQuestions(questionIndex) {
 
     questionsCard.innerHTML = "";
@@ -111,7 +114,10 @@ function renderQuestions(questionIndex) {
     }
 
 }
-
+/**
+ * this function checks if the answer is correct
+ * @param {answers user is selecting} event 
+ */
 function check (event) { 
 
     if (questions[questionsIndex].correct === event) {
@@ -126,22 +132,20 @@ function check (event) {
 
 }
 
-  startBtn.addEventListener("click", function (event) {
-    timer();
-    //console.log("event registered");
-    renderState("-intro");
-    renderState("inProgress");
-    renderState("-end");
 
-    
-    
-  });
+startBtn.addEventListener("click", function (event) {
+    //starts timer
+    timer();
+    renderState("-intro"); //intro is hidden
+    renderState("inProgress");//inprogress section is dispalyed
+    renderState("-end");//end section is hidden
+});
 
 function terminate () {
     countDown = 0;
     renderState("-intro");
     renderState("-inProgress");
-    renderState("end");
+    renderState("end"); //end section displayed only
     scoreTotal.innerHTML = "Your Score: " + currentScore + " out of " + questions.length;
     
     
@@ -149,7 +153,10 @@ function terminate () {
 
 
 
-
+/**
+ * 
+ * @param {a reference to an element on index.html that needs to be either hidden or displayed} element 
+ */
 function switchState(element) {
 
     if (element.classList.contains("hide")) {
@@ -159,7 +166,10 @@ function switchState(element) {
     }
     
 }
-
+/**
+ * 
+ * @param {a reference to an element on index.html that needs to be checked if hidden or not} element 
+ */
 function isHidden(element) {
     if (element.classList.contains("hide")) {
         return true;
@@ -168,6 +178,10 @@ function isHidden(element) {
     }
 }
 
+/**
+ * Render state renders the stage that the user is in
+ * @param {section elements on index.html that represent the state} element 
+ */
 function renderState(element) {
     switch (element) {
         case "intro":
@@ -209,41 +223,23 @@ function renderState(element) {
         break;
     }
 }
-/*
-backBtn.addEventListener("click", function (event) {
-    
-    window.location.replace("index.html");
-});*/
 
-/*
-function scoreBoard() {
-    var initials = document.querySelector("#initials");
-    var submitInitialsBtn = document.querySelector("#submitInitialsBtn");
-    scoreTotal.push();
-
-}*/
-
-
-
-
-
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
 submitInitialsBtn.addEventListener("click", function (event) {
-
+    //user must enter an initial
     if (initials.value === null || initials.value === "" || initials === undefined) {
         alert("you must enter a valid initial");
         return;
     }
+    //object to be stringified and stored
     var playerObjFinalResults = {
         initials: initials.value,
         score: currentScore,
-      };
-    //var scoreBoard;
+    };
+    
     var scoreBoard = localStorage.getItem("scoreBoard");
     if (!scoreBoard) {
         console.log("line 247 scoreBoard returned not true");
-        scoreBoard = [];
+        scoreBoard = []; //if no localstorage create an array
            
     } else {
         scoreBoard = JSON.parse(scoreBoard); 
@@ -262,11 +258,9 @@ submitInitialsBtn.addEventListener("click", function (event) {
 
 
 
-    switchState(formEle);
-    switchState(scoreCard);
-    //scoreCard.innerHTML = newScore;
-    //scoreCard.innerHTML = "newScore here"; just for testing
-    readScores(scoreBoard)
+    switchState(formEle); //removes the form from the final screen
+    switchState(scoreCard); //displays the scorecard
+    readScores(scoreBoard) //displays the localstorage on the page
 
 });
 
@@ -276,7 +270,10 @@ clearBtn.addEventListener("click", function () {
      scoreCard.innerHTML = "";
 });
 
-
+/**
+ * 
+ * @param {the parsed scoreBoard object} scoreBoard 
+ */
 function readScores(scoreBoard) {
     console.log("scoreboard as str: "+scoreBoard);
     if (scoreBoard === null) {
@@ -284,9 +281,7 @@ function readScores(scoreBoard) {
         return;
     }
 
-    //scoreBoard = JSON.parse(scoreBoard);
-    //console.log("scoreboard as obj: "+scoreBoard);
-    
+    //dynamically render the scoreboard elements 
     var li;
     var ol = document.createElement("ol");
     for (var i = 0; i < scoreBoard.length; i++) {
@@ -307,9 +302,6 @@ function readScores(scoreBoard) {
 backBtn.addEventListener("click", function () {
     location.reload();
 });
-
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
 
 questionsCard.addEventListener("click", function (event) {
     var event = event.target;
