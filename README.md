@@ -8,6 +8,12 @@ To help familiarize you with these tests and allow you to use the skills covered
 
 This week’s coursework will equip you with all the skills you need to succeed in this assignment.
 
+
+![Screen Shot 2021-07-12 at 4 15 02 AM](https://user-images.githubusercontent.com/73507926/125254139-2eb6ca80-e2c8-11eb-851c-e00b7162222f.png)
+![Screen Shot 2021-07-12 at 4 15 19 AM](https://user-images.githubusercontent.com/73507926/125254149-32e2e800-e2c8-11eb-8eec-1711b79324fb.png)
+![Screen Shot 2021-07-12 at 4 16 11 AM](https://user-images.githubusercontent.com/73507926/125254153-34141500-e2c8-11eb-99ec-fad35e34dfea.png)
+
+
 ## User Story
 
 ```
@@ -31,58 +37,34 @@ THE isN the game over
 WHEN the game is over
 THEN I can save my initials and my score
 ```
-
 ## Mock-Up
-
 The following animation demonstrates the application functionality:
-
 ![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/04-web-apis-homework-demo.gif)
 
 ## Grading Requirements
-
 This homework is graded based on the following criteria: 
 
 ### Technical Acceptance Criteria: 40%
-
 * Satisfies all of the preceding acceptance criteria.
 
 ### Deployment: 32%
 
 * Application deployed at live URL.
-
 * Application loads with no errors.
-
 * Application GitHub URL submitted.
-
 * GitHub repository contains application code.
 
 ### Application Quality: 15%
-
 * Application user experience is intuitive and easy to navigate.
-
 * Application user interface style is clean and polished.
-
 * Application resembles the mock-up functionality provided in the homework instructions.
 
 ### Repository Quality: 13%
-
 * Repository has a unique name.
-
 * Repository follows best practices for file structure and naming conventions.
-
 * Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
 * Repository contains multiple descriptive commit messages.
-
 * Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
 
 ---
 
